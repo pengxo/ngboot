@@ -27,7 +27,7 @@ export class EditemployeeComponent {
   }
  
   gotoEmployeeList() {
-    this.router.navigate(['/editEmployee']); 
+    this.router.navigate(['/employees']); 
   }
 
   updateEmployee(newItem: Employee) {
