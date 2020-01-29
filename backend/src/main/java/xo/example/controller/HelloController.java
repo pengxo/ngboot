@@ -1,13 +1,17 @@
-package xo.example;
+package xo.example.controller;
 
 import java.util.Set;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import xo.example.exception.EmployeeNotFoundException;
 import xo.example.model.Employee;
 import xo.example.model.EmployeeContainer;
 
@@ -16,17 +20,19 @@ import xo.example.model.EmployeeContainer;
 public class HelloController {
 
 	@GetMapping(path = "/hello")
-	public String sayHello() {
-		return "Hello from Spring Boot 2 with angular 2";
+	public ResponseEntity<String> sayHello() {
+		return new ResponseEntity<>("Hello from Spring Boot 2 with angular 2", HttpStatus.OK);
 	}
 
-	@GetMapping("/employees")
+	@GetMapping(path = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Set<Employee> getEmployees() {
 		return EmployeeContainer.getAllEmployes();
 	}
 
 	@PostMapping("/addEmployee")
 	public void addEmployees(@RequestBody final Employee employee) {
+		if (employee.getName() == null)
+			throw new EmployeeNotFoundException();
 		EmployeeContainer.addEmployee(employee);
 	}
 
