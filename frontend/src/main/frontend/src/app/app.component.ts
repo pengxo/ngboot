@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Employee } from './model/employee';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ngboot';
+  title = 'Spring Boot with Angular 2 Application';
+  globalEmployee: Employee
+
+  updateEmployee(newItem: Employee) {
+	debugger;
+    this.globalEmployee = newItem;
+  }
+
 }

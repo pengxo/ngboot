@@ -1,0 +1,55 @@
+<div class="card my-5" >
+  <div class="card-body">
+    <table class="table table-bordered table-striped" >
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">age</th>
+          <th scope="col">gender</th>
+          <th scope="col">position</th>
+          <th scope="col">remove</th>
+          <th scope="col">edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.age }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.position }}</td>
+           <td>
+            <span class="table-remove">
+              <button routerLink="/deleteEmployee" type="button" id="delete" (click)="remove(employee)">Remove</button>
+            </span>
+          </td>
+          <td>
+            <span class="table-edit">
+              <button routerLink="/editEmployee" type="button" id="edit" (click)="edit(employee)">Edit</button>
+            </span>
+          </td>
+
+        </tr>
+      </tbody>
+       
+    </table>
+  </div>
+<!--     <app-deleteemployee> </app-deleteemployee> -->
+<!--      <app-editemployee> </app-editemployee> -->
+</div>
+
+
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+   background-color: #f1f1c1;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+</style>
