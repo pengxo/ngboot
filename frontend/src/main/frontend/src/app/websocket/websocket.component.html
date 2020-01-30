@@ -1,0 +1,38 @@
+<div id="main-content" class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="connect">WebSocket connection:</label>
+          <button id="connect" style="margin-left: 10px;" class="btn btn-default" type="button" [disabled]="disabled" (click)="connect()">Connect</button>
+          <button id="disconnect" style="margin-left: 30px;" class="btn btn-default" type="button" [disabled]="!disabled" (click)="disconnect()">Disconnect
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6" style="margin-top: 10px;">
+      <form class="form-inline" name="test-form">
+        <div class="form-group">
+          <label for="name">What is your name?</label>
+          <input style="margin-left: 10px;" type="text" id="name" name="name" class="form-control" placeholder="Your name here..." [(ngModel)]="name">
+        </div>
+        <button  style="margin-top: 10px;"id="send" class="btn btn-default" type="button" (click)="sendName()">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 10px;">
+    <div class="col-md-12" *ngIf="showConversation">
+      <table id="conversation" class="table table-striped">
+        <thead>
+        <tr>
+          <th>Greetings</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let greeting of greetings" >
+          <tr><td> {{greeting}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

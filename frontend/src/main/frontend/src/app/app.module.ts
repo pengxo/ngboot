@@ -10,6 +10,7 @@ import { EmployeeformComponent } from './employeeform/employeeform.component';
 import { EmployeeServiceService } from './service/employee-service.service';
 import { DeleteemployeeComponent } from './deleteemployee/deleteemployee.component';
 import { EditemployeeComponent } from './editemployee/editemployee.component';
+import { WebsocketComponent } from './websocket/websocket.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { EditemployeeComponent } from './editemployee/editemployee.component';
     EmployeesComponent,
     EmployeeformComponent,
     DeleteemployeeComponent,
-    EditemployeeComponent
+    EditemployeeComponent,
+    WebsocketComponent
   ],
   imports: [
     BrowserModule,
