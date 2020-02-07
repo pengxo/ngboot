@@ -8,12 +8,13 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
 public class Oauth2RestController {
 
-	@RequestMapping("/api/employees/me")
+	@RequestMapping(path = "/api/employees/me", method = RequestMethod.GET)
 	public ResponseEntity<UserProfile> profile() {
 
 		// Build some dummy data to return for testing
