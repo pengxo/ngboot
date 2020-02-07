@@ -9,6 +9,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
 
+import xo.example.configproperties.EmployeeProperties;
+import xo.example.profile.ProfileInterface;
+
 @SpringBootApplication
 @EnableJms
 @EnableScheduling
@@ -18,6 +21,10 @@ public class NgbootApplication {
 		final ConfigurableApplicationContext context = SpringApplication.run(NgbootApplication.class, args);
 		context.registerShutdownHook();
 		executeScheduledTask();
+		final EmployeeProperties bean = context.getBean(EmployeeProperties.class);
+		System.out.println("The property bean is: " + bean);
+		final ProfileInterface profileBean = context.getBean(ProfileInterface.class);
+		System.out.println("The controller bean is: " + profileBean);
 	}
 
 	@Bean
