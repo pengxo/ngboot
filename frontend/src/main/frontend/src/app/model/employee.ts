@@ -4,6 +4,6 @@ export class Employee {
 	name: string;
 	age: number;
 	gender: string;
-	position: string;
+	job: string;
 
 }

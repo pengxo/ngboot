@@ -21,6 +21,7 @@ public class NgbootApplication {
 		final ConfigurableApplicationContext context = SpringApplication.run(NgbootApplication.class, args);
 		context.registerShutdownHook();
 		executeScheduledTask();
+
 		final EmployeeProperties bean = context.getBean(EmployeeProperties.class);
 		System.out.println("The property bean is: " + bean);
 		final ProfileInterface profileBean = context.getBean(ProfileInterface.class);
@@ -32,10 +33,10 @@ public class NgbootApplication {
 		return new RestTemplate();
 	}
 
-	@Scheduled(fixedRate = 30000)
+	@Scheduled(fixedRate = 300000)
 	public static void executeScheduledTask() {
 		System.out.println(
-				"This is a scheduled task executed every 30 seconds. in thread: " + Thread.currentThread().getName());
+				"This is a scheduled task executed every 300 seconds. in thread: " + Thread.currentThread().getName());
 
 	}
 }

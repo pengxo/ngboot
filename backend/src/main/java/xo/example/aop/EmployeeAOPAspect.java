@@ -26,7 +26,7 @@ public class EmployeeAOPAspect {
 //		System.out.println("The name of the join point around is: " + joinPoint.getSignature().getName());
 //	}
 
-	@Pointcut("execution(* xo.example.controller.HelloController.sayHello(..))")
+	@Pointcut("execution(* xo.example.controller.EmployeeController.sayHello(..))")
 	public void executeTaskWithAOP() {
 		// Nothing to do.
 	}

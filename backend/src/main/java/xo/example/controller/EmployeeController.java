@@ -1,6 +1,6 @@
 package xo.example.controller;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.annotation.PreDestroy;
 
@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import xo.example.event.EmployeePublisher;
 import xo.example.exception.EmployeeNotFoundException;
-import xo.example.model.Employee;
-import xo.example.model.EmployeeContainer;
+import xo.example.model.entity.Employee;
+import xo.example.model.service.EmployeeService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class HelloController {
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService employeeService;
 
 	@Autowired
 	private EmployeePublisher publisher;
@@ -33,31 +36,30 @@ public class HelloController {
 	}
 
 	@GetMapping(path = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Set<Employee> getEmployees() {
-		return EmployeeContainer.getAllEmployes();
+	public List<Employee> getEmployees() {
+		return employeeService.getAllEmployes();
 	}
 
 	@PostMapping("/addEmployee")
 	public void addEmployees(@RequestBody final Employee employee) {
 		if (employee.getName() == null)
 			throw new EmployeeNotFoundException();
-		EmployeeContainer.addEmployee(employee);
+		employeeService.saveEmployee(employee);
 	}
 
 	@PostMapping("/deleteEmployee")
 	public void deleteEmployee(@RequestBody final Employee employee) {
-		EmployeeContainer.removeById(employee.getId());
+		employeeService.removeEmployee(employee);
 	}
 
 	@PostMapping("/editEmployee")
 	public void editEmployee(@RequestBody final Employee employee) {
-		EmployeeContainer.removeById(employee.getId());
-		EmployeeContainer.addEmployee(employee);
+		employeeService.updateEmployee(employee);
 	}
 
 	@PreDestroy
 	private void preDestroy() {
-		System.out.println("The HelloController bean is destroyed");
+		System.out.println("The EmployeeController bean is destroyed");
 	}
 
 }

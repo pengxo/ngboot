@@ -1,13 +1,25 @@
-package xo.example.model;
+package xo.example.model.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table(name = "employee")
+@Entity
 public class Employee implements Serializable {
 
 	private static final long serialVersionUID = 6813003645119875514L;
 
-	private final int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
 	private String name;
 
@@ -15,17 +27,19 @@ public class Employee implements Serializable {
 
 	private String gender;
 
-	private String position;
+	private String job;
 
-	public Employee(final int id, final String name, final int age, final String gender, final String position) {
-		this.id = id;
+	public Employee(final String name, final int age, final String gender, final String job) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
-		this.position = position;
+		this.job = job;
 	}
 
-	public int getId() {
+	public Employee() {
+	}
+
+	public Long getId() {
 		return id;
 	}
 
@@ -53,17 +67,17 @@ public class Employee implements Serializable {
 		this.gender = gender;
 	}
 
-	public String getPosition() {
-		return position;
+	public String getJob() {
+		return job;
 	}
 
-	public void setPosition(final String position) {
-		this.position = position;
+	public void setJob(final String job) {
+		this.job = job;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(age, gender, id, name, position);
+		return Objects.hash(age, gender, id, name, job);
 	}
 
 	@Override
@@ -76,13 +90,13 @@ public class Employee implements Serializable {
 			return false;
 		final Employee other = (Employee) obj;
 		return age == other.age && Objects.equals(gender, other.gender) && id == other.id
-				&& Objects.equals(name, other.name) && Objects.equals(position, other.position);
+				&& Objects.equals(name, other.name) && Objects.equals(job, other.job);
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", position="
-				+ position + "]";
+		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", position=" + job
+				+ "]";
 	}
 
 }
