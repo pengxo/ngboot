@@ -10,8 +10,8 @@
 	<description>The ngboot backend project</description>
 
 	<parent>
-		<groupId>xo.example</groupId>
-		<artifactId>ngboot</artifactId>
+		<groupId>com.pengxo</groupId>
+		<artifactId>ngboot</artifactId> 
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
@@ -90,7 +90,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>xo.example</groupId>
+			<groupId>com.pengxo</groupId>
 			<artifactId>frontend</artifactId>
 			<version>${project.version}</version>
 			<scope>runtime</scope>

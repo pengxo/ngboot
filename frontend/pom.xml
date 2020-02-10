@@ -9,7 +9,7 @@
     <description>The ngboot frontend project</description>
 
     <parent>
-        <groupId>xo.example</groupId>
+        <groupId>com.pengxo</groupId>
         <artifactId>ngboot</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
