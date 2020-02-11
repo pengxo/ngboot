@@ -1,6 +1,5 @@
-package com.pengxo.model.service;
+package com.pengxo.database.service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.pengxo.model.entity.Employee;
-import com.pengxo.model.repository.EmployeeRepository;
+import com.pengxo.database.entity.Employee;
+import com.pengxo.database.repository.EmployeeRepository;
 
 @Service
 public class EmployeeService {
@@ -20,7 +19,7 @@ public class EmployeeService {
 
 	@Transactional
 	public List<Employee> getAllEmployes() {
-		return Collections.unmodifiableList(employeeRepository.findAll());
+		return employeeRepository.findAll();
 	}
 
 	@Transactional
@@ -28,6 +27,12 @@ public class EmployeeService {
 		employeeRepository.save(employee);
 	}
 
+	/**
+	 * Updates the employee for the changes from the use.
+	 * {@link EmployeeService#saveEmployee(Employee)} can also be used.
+	 *
+	 * @param employee
+	 */
 	@Transactional
 	public void updateEmployee(final Employee employee) {
 		final Optional<Employee> optional = employeeRepository.findById(employee.getId());
@@ -42,12 +47,12 @@ public class EmployeeService {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public void removeEmployee(final Employee employee) {
-		removeById(employee.getId());
+	public void deleteEmployee(final Employee employee) {
+		deleteById(employee.getId());
 	}
 
 	@Transactional
-	public void removeById(final Long id) {
+	public void deleteById(final Long id) {
 		employeeRepository.findById(id).ifPresent(em -> employeeRepository.delete(em));
 	}
 }

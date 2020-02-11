@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pengxo.database.entity.Employee;
+import com.pengxo.database.service.EmployeeService;
 import com.pengxo.event.EmployeePublisher;
 import com.pengxo.exception.EmployeeNotFoundException;
-import com.pengxo.model.entity.Employee;
-import com.pengxo.model.service.EmployeeService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -53,7 +53,7 @@ public class EmployeeController {
 
 	@PostMapping("/deleteEmployee")
 	public void deleteEmployee(@RequestBody final Employee employee) {
-		employeeService.removeEmployee(employee);
+		employeeService.deleteEmployee(employee);
 	}
 
 	@PostMapping("/editEmployee")
@@ -63,7 +63,7 @@ public class EmployeeController {
 
 	@PreDestroy
 	private void preDestroy() {
-		logger.debug("The EmployeeController bean is destroyed");
+		logger.debug("The EmployeeController bean is removed from the container.");
 	}
 
 }

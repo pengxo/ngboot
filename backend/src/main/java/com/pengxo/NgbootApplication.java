@@ -31,6 +31,7 @@ public class NgbootApplication {
 
 		logger.debug("The property bean is: {}", bean);
 		logger.debug("The controller bean is: {}", profileBean);
+
 	}
 
 	@Bean
