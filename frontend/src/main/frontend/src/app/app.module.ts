@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatTableModule } from '@angular/material'  
+import { MatTableModule } from '@angular/material'
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +17,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { ChartComponent } from './chart/component/chart.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +29,16 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     DeleteemployeeComponent,
     EditemployeeComponent,
     WebsocketComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    ChartComponent
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-	MatTableModule,
+    MatTableModule,
     NoopAnimationsModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
@@ -40,7 +46,9 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
         strictStateImmutability: true,
         strictActionImmutability: true
       }
-    })
+    }),
+    MatButtonModule,
+    MatPaginatorModule
   ],
   providers: [EmployeeServiceService, DeleteemployeeComponent, EditemployeeComponent],
   bootstrap: [AppComponent]

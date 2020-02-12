@@ -1,0 +1,17 @@
+<div>
+  <div>
+    <div style="display: block;width:100%;" *ngIf="dataReady">
+      <canvas baseChart
+              [datasets]="chartDataToDisplay"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        [legend]="chartLegend"
+        [chartType]="chartType">
+      </canvas>
+    </div>
+    <button mat-button mat-stroked-button color="primary" (click)="randomize()">Update</button>
+    <button mat-button mat-stroked-button color="primary" style="margin-left: 20px;" (click)="setChartType('line')">Line</button>
+    <button mat-button mat-stroked-button color="primary" style="margin-left: 20px;" (click)="setChartType('bar')">Bar</button>
+    <button mat-button mat-stroked-button color="primary" style="margin-left: 20px;" (click)="setChartType('pie')">Pie</button>
+  </div>
+</div>
