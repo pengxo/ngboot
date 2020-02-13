@@ -12,20 +12,20 @@ export class EmployeeformComponent {
 
  employee: Employee;
  isClicked = false;
- 
+
   constructor(
-    private route: ActivatedRoute, 
-      private router: Router, 
+    private route: ActivatedRoute,
+      private router: Router,
         private employeeService: EmployeeServiceService) {
     this.employee = new Employee();
   }
- 
+
   onSubmit() {
 	this.isClicked = true;
     this.employeeService.save(this.employee).subscribe(result => this.gotoEmployeeList());
   }
- 
+
   gotoEmployeeList() {
-    this.router.navigate(['/employees']); 
+    this.router.navigate(['/employeelist']);
   }
 }

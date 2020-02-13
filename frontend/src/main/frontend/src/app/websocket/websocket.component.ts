@@ -8,7 +8,7 @@ import * as SockJS from 'sockjs-client';
   styleUrls: ['./websocket.component.css']
 })
 export class WebsocketComponent implements OnInit {
-	
+
  greetings: string[] = [];
   showConversation: boolean = false;
   ws: any;
@@ -49,6 +49,7 @@ export class WebsocketComponent implements OnInit {
   }
 
   sendName() {
+    debugger
     var data = JSON.stringify({
       'name' : this.name
     })
