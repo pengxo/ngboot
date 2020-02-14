@@ -12,20 +12,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Order(1)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Override
-	protected void configure(final HttpSecurity http) throws Exception {
-		http.requestMatchers().antMatchers("/api/**", "/login", "/oauth/authorize").and().authorizeRequests()
-				.anyRequest().authenticated().and().formLogin().permitAll();
-	}
+    @Override
+    protected void configure(final HttpSecurity http) throws Exception {
+        http.requestMatchers().antMatchers("/api/**", "/login", "/oauth/authorize").and().authorizeRequests()
+                .anyRequest().authenticated().and().formLogin().permitAll();
+    }
 
-	@Override
-	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("Xingbo").password(passwordEncoder().encode("123456")).roles("USER");
-	}
+    @Override
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("Xingbo").password(passwordEncoder().encode("123456")).roles("USER");
+    }
 
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
