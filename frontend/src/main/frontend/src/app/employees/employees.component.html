@@ -1,54 +1,67 @@
-<div class="card my-5" >
+<div class="card my-5">
   <div class="card-body">
-    <table class="table table-bordered table-striped" >
+    <table class="table table-bordered table-striped">
       <thead class="thead-dark">
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Position</th>
-          <th scope="col">Remove</th>
-          <th scope="col">Edit</th>
-        </tr>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Position</th>
+        <th scope="col">Remove</th>
+        <th scope="col">Edit</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let employee of employees">
-          <td>{{ employee.id }}</td>
-          <td>{{ employee.name }}</td>
-          <td>{{ employee.age }}</td>
-          <td>{{ employee.gender }}</td>
-          <td>{{ employee.job }}</td>
-           <td>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.age }}</td>
+        <td>{{ employee.gender }}</td>
+        <td>{{ employee.job }}</td>
+        <td>
             <span class="table-remove">
-              <button routerLink="/deleteEmployee" type="button" id="delete" (click)="remove(employee)">Remove</button>
+              <button (click)="remove(employee)" id="delete" routerLink="/deleteEmployee" type="button">Remove</button>
             </span>
-          </td>
-          <td>
+        </td>
+        <td>
             <span class="table-edit">
-              <button routerLink="/editEmployee" type="button" id="edit" (click)="edit(employee)">Edit</button>
+              <button (click)="edit(employee)" id="edit" routerLink="/editEmployee" type="button">Edit</button>
             </span>
-          </td>
+        </td>
 
-        </tr>
+      </tr>
       </tbody>
 
     </table>
   </div>
-<!--     <app-deleteemployee> </app-deleteemployee> -->
-<!--      <app-editemployee> </app-editemployee> -->
+  <!--     <app-deleteemployee> </app-deleteemployee> -->
+  <!--      <app-editemployee> </app-editemployee> -->
 </div>
 
+<kendo-grid [data]="employees" [height]="410">
+  <kendo-grid-column [resizable]="true" field="id" title="ID" width="60px">
+  </kendo-grid-column>
+  <kendo-grid-column field="name" title="Name" width="250px">
+  </kendo-grid-column>
+  <kendo-grid-column field="age" title="Age" width="100px">
+  </kendo-grid-column>
+  <kendo-grid-column field="gender" title="Gender" width="100px">
+  </kendo-grid-column>
+  <kendo-grid-column field="job" title="Position" width=300px;>
+  </kendo-grid-column>
+</kendo-grid>
 
 <style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-   background-color: #f1f1c1;
-}
-th, td {
-  padding: 15px;
-  text-align: left;
-}
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #f1f1c1;
+  }
+
+  th, td {
+    padding: 15px;
+    text-align: left;
+  }
 
 </style>

@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class ChartDataController {
 
     @GetMapping(path = "/chart")
-    public List<ChartSeriesData> getAllChartData(){
+    public List<ChartSeriesData> getAllChartData() {
         return DataGenerator.getInstance().getChartSeriesData();
     }
 }

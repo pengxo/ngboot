@@ -33,3 +33,4 @@ frontend/src/main/frontend/node_modules/
 frontend/src/main/frontend/node/
 
 backend/app.log
+frontend/src/main/target/
