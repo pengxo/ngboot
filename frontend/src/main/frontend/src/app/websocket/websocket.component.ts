@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as Stomp from 'stompjs';
-import * as SockJS from 'sockjs-client';
 
 @Component({
   selector: 'app-websocket',
@@ -9,33 +8,34 @@ import * as SockJS from 'sockjs-client';
 })
 export class WebsocketComponent implements OnInit {
 
- greetings: string[] = [];
+  greetings: string[] = [];
   showConversation: boolean = false;
   ws: any;
   name: string;
   disabled: boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
- connect() {
+  connect() {
     //connect to stomp where stomp endpoint is exposed
     //let ws = new SockJS(http://localhost:8080/greeting);
-    let socket = new WebSocket("ws://localhost:8080/greeting");
+    let socket = new WebSocket("wss://ngboot.cfapps.io/greeting");
     this.ws = Stomp.over(socket);
     let that = this;
-    this.ws.connect({}, function(frame:any) {
-      that.ws.subscribe("/errors", function(message:any) {
+    this.ws.connect({}, function (frame: any) {
+      that.ws.subscribe("/errors", function (message: any) {
         alert("Error " + message.body);
       });
-      that.ws.subscribe("/topic/reply", function(message:any) {
+      that.ws.subscribe("/topic/reply", function (message: any) {
         console.log(message)
         that.showGreeting(message.body);
       });
       that.disabled = true;
-    }, function(error:any) {
+    }, function (error: any) {
       alert("STOMP error " + error);
     });
   }
@@ -51,7 +51,7 @@ export class WebsocketComponent implements OnInit {
   sendName() {
     debugger
     var data = JSON.stringify({
-      'name' : this.name
+      'name': this.name
     })
     this.ws.send("/app/message", {}, data);
   }

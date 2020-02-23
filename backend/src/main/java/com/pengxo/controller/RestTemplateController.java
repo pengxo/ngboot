@@ -25,7 +25,7 @@ public class RestTemplateController {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         final HttpEntity<String> entity = new HttpEntity<>(headers);
 
-        return restTemplate.exchange("http://localhost:8080/employees", HttpMethod.GET, entity, String.class).getBody();
+        return restTemplate.exchange("https://ngboot.cfapps.io/employees", HttpMethod.GET, entity, String.class).getBody();
     }
 
 }

@@ -13,10 +13,10 @@ export class EmployeeServiceService {
   private editEmployeeUrl: string;
 
   constructor(private http: HttpClient) {
-    this.employeesUrl = 'http://localhost:8080/employees';
-    this.addEmployeeUrl = 'http://localhost:8080/addEmployee';
-    this.deleteEmployeeUrl = 'http://localhost:8080/deleteEmployee';
-    this.editEmployeeUrl = 'http://localhost:8080/editEmployee';
+    this.employeesUrl = 'https://ngboot.cfapps.io/employees';
+    this.addEmployeeUrl = 'https://ngboot.cfapps.io/addEmployee';
+    this.deleteEmployeeUrl = 'https://ngboot.cfapps.io/deleteEmployee';
+    this.editEmployeeUrl = 'https://ngboot.cfapps.io/editEmployee';
   }
 
   public findAll(): Observable<Employee[]> {

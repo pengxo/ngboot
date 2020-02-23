@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Chart} from "../class/chart";
@@ -8,10 +8,10 @@ import {Chart} from "../class/chart";
 })
 export class ChartService {
 
-private chartUrl:string;
+  private chartUrl: string;
 
   constructor(private http: HttpClient) {
-    this.chartUrl = 'http://localhost:8080/chart';
+    this.chartUrl = 'https://ngboot.cfapps.io/chart';
   }
 
   public getChartDatas(): Observable<Chart[]> {
