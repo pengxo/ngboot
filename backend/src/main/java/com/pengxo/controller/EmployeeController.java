@@ -4,6 +4,9 @@ import com.pengxo.database.entity.Employee;
 import com.pengxo.database.service.EmployeeService;
 import com.pengxo.event.EmployeePublisher;
 import com.pengxo.exception.EmployeeNotFoundException;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +36,11 @@ public class EmployeeController {
         return new ResponseEntity<>("Hello from Spring Boot 2 with angular 2", HttpStatus.OK);
     }
 
+    @ApiOperation("Gets all employees")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully got all employees."),
+            @ApiResponse(code = 401, message = "Gets all employees failed."),
+            @ApiResponse(code = 403, message = "Gets all employees failed.")})
     @GetMapping(path = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Employee> getEmployees() {
         return employeeService.getAllEmployes();

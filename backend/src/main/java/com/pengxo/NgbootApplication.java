@@ -12,10 +12,12 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableJms
 @EnableScheduling
+@EnableSwagger2
 public class NgbootApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(NgbootApplication.class);
