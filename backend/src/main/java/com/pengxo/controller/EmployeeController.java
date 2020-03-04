@@ -4,6 +4,7 @@ import com.pengxo.database.entity.Employee;
 import com.pengxo.database.service.EmployeeService;
 import com.pengxo.event.EmployeePublisher;
 import com.pengxo.exception.EmployeeNotFoundException;
+import com.pengxo.retry.RetryService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PreDestroy;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -30,8 +32,12 @@ public class EmployeeController {
     @Autowired
     private EmployeePublisher publisher;
 
+    @Autowired
+    private RetryService retryService;
+
     @GetMapping(path = "/hello")
-    public ResponseEntity<String> sayHello() {
+    public ResponseEntity<String> sayHello() throws SQLException {
+        retryService.retryTest();
         publisher.createNewEmployee();
         return new ResponseEntity<>("Hello from Spring Boot 2 with angular 2", HttpStatus.OK);
     }
